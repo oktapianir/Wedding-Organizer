@@ -180,7 +180,9 @@ class InvoiceController extends Controller
     {
         $pemesanan = Pemesanan::findOrFail($id);
 
-        $id_inv = $pemesanan->id_inv;
+        $invoice = Invoice::where('id_pemesanan', $pemesanan->id_pemesanan)->first();
+        $id_inv = $invoice ? $invoice->id_inv : null;  
+        // $id_inv = $pemesanan->id_inv;
 
         // Pastikan data terkait tersedia
         $dekorasi = $pemesanan->dekorasi;
