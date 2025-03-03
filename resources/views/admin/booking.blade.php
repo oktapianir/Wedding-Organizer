@@ -347,7 +347,6 @@
                                             </div>
                                         </div>
                                     </div>
-            
                                 @endforeach
                             </tbody>
                         </table>
@@ -415,6 +414,32 @@
                 </div>
             </div>
             
+            <!-- Modal Success -->
+            <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered">
+                    <div class="modal-content border-0 shadow">
+                        <div class="modal-header text-white" style="background-color: rgb(85, 147, 255)">
+                            <h5 class="modal-title">Berhasil!</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body text-center">
+                            <p>Status pemesanan berhasil diperbarui!.</p>
+                            <button type="button" class="btn btn-success" data-bs-dismiss="modal" style="background-color: rgb(85, 147, 255) ">OK</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @if(session('success'))
+                <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        var successModal = new bootstrap.Modal(document.getElementById('successModal'));
+                        successModal.show();
+                    });
+                </script>
+            @endif
+
+
             
 
 
