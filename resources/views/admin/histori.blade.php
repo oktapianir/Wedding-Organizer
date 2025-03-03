@@ -170,10 +170,17 @@
                                             <label for="tanggal_pemesanan" class="form-label">Tanggal Pemesanan</label>
                                             <input type="date" class="form-control" id="tanggal_pemesanan" name="tanggal_pemesanan" value="{{ \Carbon\Carbon::parse($histori->tanggal_pemesanan)->format('Y-m-d') }}" required>
                                         </div>
-                                        <div class="mb-3">
+                                        {{-- <div class="mb-3">
                                             <label for="status_pemesanan" class="form-label">Status Pemesanan</label>
                                             <input type="text" class="form-control" id="status_pemesanan" name="status_pemesanan" value="{{ $histori->status_pemesanan }}" required>
-                                        </div>
+                                        </div> --}}
+                                        <div class="mb-3">
+                                            <label for="status_pemesanan" class="form-label">Status Pemesanan</label>
+                                            <select class="form-control" id="status_pemesanan" name="status_pemesanan" required>
+                                                <option value="confirmed" {{ $histori->status_pemesanan == 'confirmed' ? 'selected' : '' }}>Confirmed</option>
+                                                <option value="completed" {{ $histori->status_pemesanan == 'completed' ? 'selected' : '' }}>Completed</option>
+                                            </select>
+                                        </div>                                        
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -184,6 +191,33 @@
                         </div>
                     </div>
                     @endforeach
+
+                     <!-- Modal Success -->
+                    <div class="modal fade" id="successModal" tabindex="-1" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content border-0 shadow">
+                                <div class="modal-header text-white" style="background-color: rgb(85, 147, 255)">
+                                    <h5 class="modal-title">Berhasil!</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body text-center">
+                                    <p>Status pemesanan berhasil diperbarui!.</p>
+                                    <button type="button" class="btn btn-success" data-bs-dismiss="modal" style="background-color: rgb(85, 147, 255) ">OK</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    @if(session('success'))
+                        <script>
+                            document.addEventListener("DOMContentLoaded", function() {
+                                var successModal = new bootstrap.Modal(document.getElementById('successModal'));
+                                successModal.show();
+                            });
+                        </script>
+                    @endif
+
+
 
                  
           
