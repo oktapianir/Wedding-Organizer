@@ -1,10 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     @include('admin.css')
 </head>
+
 <body>
     @include('admin.sidebar')
 
@@ -12,7 +14,7 @@
     <div class="container-fluid pt-4 px-4" style="margin-left: 250px;">
         <div class="bg-light text-center rounded p-4">
             <div class="d-flex align-items-center justify-content-between mb-4">
-                <h6 class="mb-0">Semua Pesanan Masuk</h6>
+                <h4 class="mb-0">Semua Pesanan Masuk</h4>
             </div>
             <div class="table-responsive">
                 <table class="table text-start align-middle table-bordered table-hover mb-0">
@@ -24,7 +26,6 @@
                             <th scope="col">Tanggal Pesan</th>
                             <th scope="col">Total Biaya</th>
                             <th scope="col">Status</th>
-                            <th scope="col">Aksi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -36,28 +37,27 @@
                                 <td>{{ $pesanan->created_at->format('d M Y') }}</td>
                                 <td>Rp {{ number_format($pesanan->total_biaya, 0, ',', '.') }}</td>
                                 <td>
-                                    <span class="badge 
-                                        @switch($pesanan->status)
-                                            @case('Pending')
+                                    <span
+                                        class="badge 
+                                        @switch($pesanan->status_pemesanan)
+                                            @case('pending')
                                                 bg-warning
                                             @break
-                                            @case('Confirmed')
+                                            @case('confirmed')
                                                 bg-success
                                             @break
-                                            @case('Completed')
+                                            @case('completed')
                                                 bg-primary
                                             @break
                                             @default
                                                 bg-secondary
                                         @endswitch
                                     ">
-                                        {{ $pesanan->status ?? 'Belum Diproses' }}
+                                        {{ ucfirst($pesanan->status_pemesanan) ?? 'Pending' }}
                                     </span>
-                                </td>
-                                <td>
-                                    {{-- <a class="btn btn-sm btn-primary" href="{{ route('admin.pesanan.detail', $pesanan->id) }}">Detail</a> --}}
-                                </td>
+                                </td>                                
                             </tr>
+
                         @empty
                             <tr>
                                 <td colspan="7" class="text-center">Tidak ada pesanan masuk.</td>
@@ -75,4 +75,5 @@
     </div>
     <!-- Recent Sales End -->
 </body>
+
 </html>

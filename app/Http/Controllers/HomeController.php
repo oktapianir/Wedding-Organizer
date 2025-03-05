@@ -126,7 +126,6 @@ class HomeController extends Controller
     public function see_all()
     {
         $pesananBaru = Pemesanan::orderBy('created_at', 'desc')->paginate(20);
-
         return view('admin.see_all_message_order', compact('pesananBaru'));
     }   
 

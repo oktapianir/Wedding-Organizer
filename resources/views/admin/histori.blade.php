@@ -109,7 +109,7 @@
             <!-- Navbar End -->
 
             <div class="container-fluid pt-4 px-4">
-                <h6 class="mb-4">Histori</h6>
+                <h4 class="mb-4">Histori</h4>
             
                 <div class="container mt-5">
                     <div class="d-flex justify-content-end mb-3">

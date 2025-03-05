@@ -85,7 +85,7 @@
             <!-- Tabel 1 -->
             <div class="container-fluid px-4">
                 <div class="bg-light rounded h-100 p-4">
-                    <h6 class="mb-4">Data Testimoni</h6>
+                    <h4 class="mb-4">Data Testimoni</h4>
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered">
                             <thead>
