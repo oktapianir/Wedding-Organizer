@@ -101,9 +101,11 @@ class HomeController extends Controller
 
       // Mendapatkan pendapatan tahunan
     $pendapatanTahunan = Pemesanan::selectRaw('YEAR(tanggal_acara) as year, SUM(total_biaya) as total')
+    ->whereYear('tanggal_acara', date('Y'))
     ->groupBy('year')
-    ->orderBy('year', 'desc')
-    ->first(); // Ambil pendapatan untuk tahun terbaru
+    ->first();
+
+    // dd($pendapatanTahunan->toArray());
 
     // Menyusun data untuk grafik atau tampilan rating
     $data = [
@@ -118,7 +120,7 @@ class HomeController extends Controller
     ];
 
     // Mengirim data ke view
-    return view('admin.index', compact('data', 'totalAcara', 'totalPengguna', 'pesananBaru', 'closeVenue', 'pendapatanBulanan'));
+    return view('admin.index', compact('data', 'totalAcara', 'totalPengguna', 'pesananBaru', 'closeVenue', 'pendapatanBulanan', 'pendapatanTahunan'));
 }
 
 
