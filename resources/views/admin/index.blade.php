@@ -253,7 +253,7 @@
                         <div class="h-100 bg-light rounded p-4">
                             <div class="d-flex align-items-center justify-content-between mb-2">
                                 <h6 class="mb-0">Pesanan Masuk</h6>
-                                <a href="#" class="btn btn-link">Lihat Semua</a>
+                                <a href="{{ route('admin.see_all_message_order') }}" class="btn btn-link">Lihat Semua</a>
                             </div>
             
                             <div id="pesanan-list">

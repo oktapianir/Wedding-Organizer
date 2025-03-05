@@ -123,7 +123,12 @@ class HomeController extends Controller
     return view('admin.index', compact('data', 'totalAcara', 'totalPengguna', 'pesananBaru', 'closeVenue', 'pendapatanBulanan', 'pendapatanTahunan'));
 }
 
+    public function see_all()
+    {
+        $pesananBaru = Pemesanan::orderBy('created_at', 'desc')->paginate(20);
 
+        return view('admin.see_all_message_order', compact('pesananBaru'));
+    }   
 
     // public function showHistory()
     // {

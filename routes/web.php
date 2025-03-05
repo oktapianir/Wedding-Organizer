@@ -224,6 +224,7 @@ Route::delete('/invoices/{id_inv}', [InvoiceController::class, 'destroy'])->name
 Route::get('/admin/laporan', [LaporanController::class, 'index'])->name('admin.laporan');
 Route::get('/admin/laporanOmzet', [LaporanController::class, 'laporanOmzet'])->name('admin.laporanOmzet');
 
+Route::get('/admin/see_all_message', [HomeController::class, 'see_all'])->name('admin.see_all_message_order');
 
 
 
